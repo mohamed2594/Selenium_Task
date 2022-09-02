@@ -62,7 +62,7 @@ public class AuthenticationTest extends BaseTest {
 	public void verify_Invalid_SignIn (String Email, String Password, String ErrorMsg) {
 
 		homePageObj = new HomePage(driver);
-		AuthPage.Msg = ErrorMsg;
+		AuthPage.LoginErrorMessage = ErrorMsg;
 		AuthPageObj = new AuthPage(driver) ;
 		MyAccountPageObj = new MyAccountPage(driver);
 		

@@ -49,6 +49,11 @@ public class Basepage {
 	        wait= new WebDriverWait(driver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 	    }
+	
+	public void waitUntilURLToBe(String URL) {
+        wait= new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.urlToBe(URL));
+    }
 	 
 	 
 //	public void scrollToElement(WebElement element) {
@@ -87,7 +92,7 @@ public class Basepage {
 	  }
 	  public Boolean CheckElementText(By by , String text) {
 		  
-			   return driver.findElement(by).getText().contains(text);
+			   return driver.findElement(by).getText().equalsIgnoreCase(text);
 			  
 		  }
 	  
