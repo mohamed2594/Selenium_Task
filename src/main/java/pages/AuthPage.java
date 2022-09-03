@@ -11,16 +11,12 @@ public class AuthPage extends Basepage {
 		}
 	
 	public static String LoginErrorMessage = null; // the error message appeared while login failure
-	private By AuthPageTitleLocator = By.className("page-heading");
+	private By PageTitle = By.className("page-heading");
 	private By RegisterEmailTab = By.id("email_create");
 	private By CreateAccountBtn = By.id("SubmitCreate");
 	private By LoginEmailTab = By.id("email");
 	private By LoginPasswordTab = By.id("passwd");
 	private By loginBtn = By.id("SubmitLogin");
-//	private By AuthFail = By.xpath("//li[normalize-space()='Authentication failed.']");
-//	private By PasswdMissed = By.xpath("//li[normalize-space()='Password is required.']");
-//	private By LoginEmailMissed = By.xpath("//li[normalize-space()='An email address required.']");
-//	private By LoginEmailInvalid = By.xpath("//li[normalize-space()='Invalid email address.']");
 	public By LoginErrorMsg = By.xpath("//li[normalize-space()='" + LoginErrorMessage + ".']"); // generic locator for login failure message
 	private By RegEmailInvalid = By.xpath("//li[normalize-space()='Invalid email address.']");
 	private By RegEmailduplicat = By.xpath("//li[contains(text(),'An account using this email address has already be')]");
@@ -30,7 +26,7 @@ public class AuthPage extends Basepage {
 	public Boolean CheckNavigationToAuthPage () {
 		
 		waitUntilURLToBe(AuthURL);
-		return CheckElementText(AuthPageTitleLocator, AuthPageTitle);
+		return CheckElementText(PageTitle, AuthPageTitle);
 	}
 	
 	public void EnterRegisterEmail (String email) {
@@ -40,44 +36,13 @@ public class AuthPage extends Basepage {
 		click(CreateAccountBtn);
 	}
 	
-	public void EnterLoginEmail (String email) {
-		
-		waitUntilElementIsVisabile(LoginEmailTab);
-		setText(LoginEmailTab, email);
-	}
-	
-	public void EnterLoginPassword (String password) {
-		
-		waitUntilElementIsVisabile(LoginPasswordTab);
-		setText(LoginPasswordTab, password);
-	}
-	
-	public void ClickOnSignInBtn () {
+	public void SignIn (String email, String password) {
 		
 		waitUntilElementIsVisabile(loginBtn);
+		setText(LoginEmailTab, email);
+		setText(LoginPasswordTab, password);
 		click(loginBtn);
 	}
-	
-//	public String Get_AuthPage_URL () {
-//		waitUntilElementIsVisabile(loginBtn);
-//		return driver.getCurrentUrl();
-//	}
-	
-//	public Boolean Is_Missing_Login_Email_Error_Msg_Displayed () {
-//		return CheckElementVisiblity(LoginEmailMissed);
-//	}
-//	
-//	public Boolean Is_Missing_Login_Password_Error_Msg_Displayed () {
-//		return CheckElementVisiblity(PasswdMissed);
-//	}
-//	
-//	public Boolean Is_Invalid_Login_Email_Error_Msg_Displayed () {
-//		return CheckElementVisiblity(LoginEmailInvalid);
-//	}
-//	
-//	public Boolean Is_Authentication_Failed_Msg_Displayed () {
-//		return CheckElementVisiblity(AuthFail);
-//	}
 	
 	public Boolean CheckLoginErrorMsgIsDisplayed () {
 		

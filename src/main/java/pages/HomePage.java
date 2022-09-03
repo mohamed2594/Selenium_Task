@@ -11,7 +11,7 @@ public class HomePage extends Basepage {
 	}
 
 	private By signinBtn = By.className("login");
-	private By womenBtn = By.className("sf-with-ul");
+	private By womenBtn = By.xpath("//a[@title='Women']");
 	private By BlousesBtn = By.xpath("//a[@title='Blouses']");
 	public String HomePageURL = "http://automationpractice.com/index.php";
 
@@ -28,19 +28,6 @@ public class HomePage extends Basepage {
 		hoverOnElement(womenBtn);
 		click(BlousesBtn);
 	}
-
-//	public Boolean CheckWomenVisisblity() {
-//		return CheckElementVisiblity(womenBtn);
-//	}
-//
-//	public Boolean checkBlusesVisiblity() {
-//		hoverOnElement(womenBtn);
-//		return CheckElementVisiblity(BlousesBtn);
-//	}
-//
-//	public Boolean checkLoginBtnVisiblity() {
-//		return CheckElementVisiblity(signinBtn);
-//	}
 
 	public void NavigateToHomePage () {
 		

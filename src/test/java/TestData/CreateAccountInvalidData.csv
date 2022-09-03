@@ -1,0 +1,8 @@
+"testselenium@auto.com","male","","mohamed","abcdef123","2","9","2000","vodafone","Street","Alaska","2","12345","201287607435","firstname is required"
+"testselenium@auto.com","male","ahmed","","abcdef123","2","9","2000","vodafone","Street","Alaska","2","12345","201287607435","lastname is required"
+"testselenium@auto.com","male","ahmed","mohamed","","2","9","2000","vodafone","Street","Alaska","2","12345","201287607435","passwd is required"
+"testselenium@auto.com","male","ahmed","mohamed","abcdef123","2","9","2000","vodafone","","Alaska","2","12345","201287607435","address1 is required"
+"testselenium@auto.com","male","ahmed","mohamed","abcdef123","2","9","2000","vodafone","Street","","2","12345","201287607435","city is required"
+"testselenium@auto.com","male","ahmed","mohamed","abcdef123","2","9","2000","vodafone","Street","Alaska","","12345","201287607435","This country requires you to choose a State"
+"testselenium@auto.com","male","ahmed","mohamed","abcdef123","2","9","2000","vodafone","Street","Alaska","2","","201287607435","It must follow this format: 00000"
+"testselenium@auto.com","male","ahmed","mohamed","abcdef123","2","9","2000","vodafone","Street","Alaska","2","12345","","You must register at least one phone number"

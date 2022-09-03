@@ -1,11 +1,7 @@
 package pages;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MyAccountPage extends Basepage {
 
@@ -13,17 +9,23 @@ public class MyAccountPage extends Basepage {
 		super(driver);
 	}
 	
-	private By MyAccount = By.xpath("//h1[@class='page-heading']");
+	private By PageTitle = By.className("page-heading");
 	private By LogOutBtn = By.xpath("//a[@title='Log me out']");
-	private WebDriverWait wait ;
+	private By HistoryBtn = By.xpath("//span[normalize-space()='Order history and details']");
+	private String MyAccountURL = "http://automationpractice.com/index.php?controller=my-account";
+	private String MyAccountPageTitle = "MY ACCOUNT";
 	
 	
-	public Boolean Check_MyAccount_visibility() {
+	public Boolean CheckNavigateToMyAccountPage() {
 
-		wait= new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.urlContains("?controller=my-account"));
+		waitUntilURLToBe(MyAccountURL);
+		return CheckElementText(PageTitle, MyAccountPageTitle);
+	}
+	
+	public void ClickOnOrdersHistory () {
 		
-		return CheckElementVisiblity(MyAccount);
+		waitUntilElementIsVisabile(HistoryBtn);
+		click(HistoryBtn);
 	}
 	
 	public void LogOut () {

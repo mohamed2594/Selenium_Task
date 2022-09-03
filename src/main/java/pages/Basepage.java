@@ -55,37 +55,6 @@ public class Basepage {
 		wait.until(ExpectedConditions.urlToBe(URL));
     }
 	 
-	 
-//	public void scrollToElement(WebElement element) {
-//		 
-//		 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-//		 
-//	 }
-	
-//	public void sendKeysInSequence(WebElement element ,String text) {
-//	    Random r = new Random();
-//	    for(int i = 0; i < text.length(); i++) {
-//	        try {
-//	            Thread.sleep((int)(r.nextGaussian() * 15 + 100));
-//	        } catch(InterruptedException e) {}
-//	        String s = new StringBuilder().append(text.charAt(i)).toString();
-//	        element.sendKeys(s);
-//	    }
-	    
-	  
-//	}
-	  public String RandomMobileNum() {
-	    	Random rnd = new Random();
-		    String number = "010" + rnd.nextInt(99999999);
-		    return number;
-		    
-	    }
-	  public String RndomeEmail() {
-	    	Random rnd = new Random();
-		    String email = "mohamed" + rnd.nextInt(99999999) + "@test.com";
-		    return email;
-		    
-	    }
 	  public Boolean CheckElementVisiblity(By by) {
 		return   driver.findElement(by).isDisplayed();
 		  

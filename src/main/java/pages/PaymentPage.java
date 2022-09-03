@@ -9,18 +9,23 @@ public class PaymentPage extends Basepage {
 		super(driver);
 	}
 	
-	private By PaymentPageTitle = By.className("page-heading");
-	private By PayByBankWireBtn = By.className("bankwire");
+	private By PageTitle = By.className("navigation_page");
+	private By PayByBankWireBtn = By.xpath("//a[@title='Pay by bank wire']");
+	private String PaymentPageTitle = "Your payment method";
 	
 	
-	public Boolean VerifyNavigateToPaymentPage () {
-		waitUntilElementIsVisabile(PaymentPageTitle);
-		return CheckElementVisiblity(PaymentPageTitle);
+	public Boolean CheckNavigateToPaymentPage () {
+		
+		waitUntilElementIsVisabile(PageTitle);
+		return CheckElementText(PageTitle, PaymentPageTitle);
 	}
 	
 	public void ChooseBankWirePayment () {
-		waitUntilElementIsVisabile(PaymentPageTitle);
+		
+		waitUntilElementIsVisabile(PayByBankWireBtn);
 		click(PayByBankWireBtn);
 	}
+	
+	
 
 }

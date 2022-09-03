@@ -12,10 +12,11 @@ import pages.HomePage;
 import pages.MyAccountPage;
 
 public class AuthenticationTest extends BaseTest {
+	
 	HomePage homePageObj;
 	AuthPage AuthPageObj;
 	MyAccountPage MyAccountPageObj;
-
+	
 	@DataProvider(name="SignInInvalidData")
 	public Object[][] SignInInvalidData() throws IOException
 	{
@@ -32,33 +33,32 @@ public class AuthenticationTest extends BaseTest {
 		return ER.getExcelData("SignInValidData", 2);
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 3)
 	public void verify_that_signIn_page_is_Accessible () {
+		
 		homePageObj = new HomePage(driver);
 		AuthPageObj = new AuthPage(driver) ;
-
+		
 		homePageObj.OpenAuthPage();
-		Assert.assertEquals(AuthPageObj.Get_AuthPage_URL(), AuthPageObj.AuthURL);
+		Assert.assertTrue(AuthPageObj.CheckNavigationToAuthPage());
 
 	}
 	
 	@Test(priority = 2,dataProvider = "SignInValidData")
 	public void verify_that_user_can_signIn_with_valid_data (String Email , String Password) {
+		
 		homePageObj = new HomePage(driver);
 		AuthPageObj = new AuthPage(driver) ;
 		MyAccountPageObj = new MyAccountPage(driver);
 		
-		homePageObj.NavigateToHomePage();
 		homePageObj.OpenAuthPage();
-		AuthPageObj.EnterLoginEmail(Email);
-		AuthPageObj.EnterLoginPassword(Password);
-		AuthPageObj.ClickOnSignInBtn();
-		Assert.assertTrue(MyAccountPageObj.Check_MyAccount_visibility());
+		AuthPageObj.SignIn(Email, Password);
+		Assert.assertTrue(MyAccountPageObj.CheckNavigateToMyAccountPage());
 		MyAccountPageObj.LogOut();
 
 	}
 
-	@Test(priority = 3,dataProvider = "SignInInvalidData")
+	@Test(priority = 1,dataProvider = "SignInInvalidData")
 	public void verify_Invalid_SignIn (String Email, String Password, String ErrorMsg) {
 
 		homePageObj = new HomePage(driver);
@@ -66,12 +66,9 @@ public class AuthenticationTest extends BaseTest {
 		AuthPageObj = new AuthPage(driver) ;
 		MyAccountPageObj = new MyAccountPage(driver);
 		
-		homePageObj.NavigateToHomePage();
 		homePageObj.OpenAuthPage();
-		AuthPageObj.EnterLoginEmail(Email);
-		AuthPageObj.EnterLoginPassword(Password);
-		AuthPageObj.ClickOnSignInBtn();
-		Assert.assertTrue(AuthPageObj.Is_Error_Msg_Displayed());
+		AuthPageObj.SignIn(Email, Password);
+		Assert.assertTrue(AuthPageObj.CheckLoginErrorMsgIsDisplayed());
 
 	}
 
