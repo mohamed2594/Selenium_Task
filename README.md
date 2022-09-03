@@ -17,7 +17,7 @@ This repository contains code sample using selenium with java to test e-commerce
   
      # CMD ====>  mvn test   from the level of project Ex (cd Downloads/ Selenium_Task)
      # or we can run from xml file <run.xml>
-     # you will find HTML Reporort created inside test-output/TestReport.html
+     # you will find HTML Reporort created inside Reports/TestReport.html
 
   # **Target** :- 
   
